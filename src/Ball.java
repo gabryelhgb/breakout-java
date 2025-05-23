@@ -2,14 +2,10 @@ import java.awt.*;
 import java.util.*; //serve a Random
 
 public class Ball extends Rectangle {
-
-	Random random;
 		
 	int dx;
 	int dy;
 	int ballSpeed = 2;
-	int vectorX;
-	int vectorY;
 	
 	Ball(int x, int y, int width, int height) {
 	

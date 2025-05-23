@@ -1,14 +1,12 @@
 //**********************************************************
 
-import java.io.*;
-import java.util.*;
 import java.awt.*;
-import java.awt.event.*;	//per utilizzare EventListner
+import java.awt.event.*;
 import java.awt.image.*; 
+import java.io.*;	//per utilizzare EventListner
+import java.util.*;
 import javax.sound.sampled.*;
-
 import javax.swing.*; //per utilizzare JPanel
-import javax.swing.plaf.TreeUI;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -140,7 +138,6 @@ public class GamePanel extends JPanel implements Runnable {
 				sound.open(AudioSystem.getAudioInputStream(getClass().getResource("audio/" + fileName)));
 				soundPlaying = true;
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("Couldn't play sound due to an error. Check above this message to see what happened.");
 			}
 		}
@@ -153,6 +150,7 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 	
 //------------------------------- non toccare -------------------------------
+    @Override
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
@@ -426,6 +424,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	}
 
+        @Override
 	public void run() { 
 
 		long lastTime = System.nanoTime();
@@ -459,6 +458,7 @@ public class GamePanel extends JPanel implements Runnable {
 		//l’utente implementa solo quelli che usa
 
 		//questo metodo SPOSTA il paddle quando il tasto è premuto
+        @Override
 		public void keyPressed(KeyEvent e) {
 			
 			//paddle1.keyPressed(e);
@@ -479,6 +479,7 @@ public class GamePanel extends JPanel implements Runnable {
 		}
 		
 		//questo metodo FERMA il paddle rilasciando il tasto, azzerando il DeltaX
+        @Override
 		public void keyReleased(KeyEvent e) {
 			
 			if((e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) & attractModeActive == false) {
